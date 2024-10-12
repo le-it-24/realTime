@@ -27,9 +27,7 @@
 
 /***PCB_LIGHT CONTROL DEFINITIONS***/
 #define PCB_LIGHT_TIMER                  TCB0
-uint16_t pulseDur_PCB_LIGHT; // Defines how long PCB_LIGHT stays on when toggled.
-uint32_t timerFreq_PCB_LIGHT;
-int PCBLIGHT_TIMERFREQ_CHNG_FLAG = 0; // Used by system controller to indicate when the system clock frequency has changed. This record helps prevent specific timing functions from having to run through a look up table when the frequency is not changing
+#define PULSE_DURATION_PCB_LIGHT 250 // Defines how long, in milliseconds, PCB_LIGHT stays on when toggled.
 
 
 
