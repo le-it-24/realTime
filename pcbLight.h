@@ -47,8 +47,8 @@ void init_PCB_LIGHT(uint32_t timerFreq) // Initializes PCB light as an output.
 void configTimer_blink_PCB_LIGHT()
 {
     
-    PCB_LIGHT_TIMER.CTRLA |= (1 << TCD0_CLKSEL1) | (1 << TCD0_CLKSEL2); // System clock set as clock source.
-    PCB_LIGHT_TIMER.CTRLA |= (1 << TCD0_CNTPRES1) | (1 << TCD0_CNTPRES0); // Prescale clock source by 32.
+    PCB_LIGHT_TIMER.CTRLA |= (1 << TCB0_CLKSEL0); // clock-per set as clock source.
+    PCB_LIGHT_TIMER.CTRLA |= (1 << TCB0_RUNSTNDBY); // Allow TCB0 to run in STANDBY.
     
     if(PCBLIGHT_TIMERFREQ_CHNG_FLAG) // System clock has changed frequency, which effects value needed to be written to comparative data-structures.
     {
