@@ -32,3 +32,5 @@
 #define OCTOBER         10
 #define NOVEMBER        11
 #define DECEMBER        12
+
+int month_30DaysOnly[] = {APRIL,JUNE,SEPTEMBER,NOVEMBER};

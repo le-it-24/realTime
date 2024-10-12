@@ -31,7 +31,7 @@ struct time sysTime;
 
 
 /***REALTIME DATA PROCESSING METHODS***/
-int isLeapYear(uint16_t year)
+int isLeapYear(uint16_t year) // Returns 1 if year is a leap.
 {
     if(((year % 4 == 0) && (year%100 != 0))||(year%400 == 0))
     {
@@ -43,6 +43,18 @@ int isLeapYear(uint16_t year)
     }
 }
 
+int is30dayMonth(uint8_t month) // Returns 1 if month only has 30-days.
+{
+    for(int m = 0; m < 4; m++)
+    {
+        if(month == month_30DaysOnly[m])
+        {
+            return 1;
+        }
+    }
+    
+    return 0;
+}
 
 
 
@@ -197,7 +209,7 @@ void update_time(int increment)
 
                         if(sysTime.month == FEBRUARY)
                         {
-                            if(!sysTime.leapYear))
+                            if(!sysTime.leapYear)
                              {
 
                                 sysTime.month += 1;
