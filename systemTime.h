@@ -30,6 +30,22 @@ struct time sysTime;
 
 
 
+/***REALTIME DATA PROCESSING METHODS***/
+int isLeapYear(uint16_t year)
+{
+    if(((year % 4 == 0) && (year%100 != 0))||(year%400 == 0))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
+
+
 /***REALTIME KEEPING METHODS***/
 /*
 * This method updates the system time, and ensures that the PCB light is blinked every second.
@@ -70,7 +86,7 @@ void update_time(int increment)
                             
                             if(sysTime.month == FEBRUARY)
                             {
-                                if(!sysTime.leapYear))
+                                if(!sysTime.leapYear)
                                  {
                                     
                                     sysTime.month += 1;
