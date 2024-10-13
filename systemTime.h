@@ -1,9 +1,26 @@
+/* 
+ * File:   systemTime.h
+ * Author: Leonard
+ *
+ * Created on October 13, 2024, 8:39 AM
+ */
 
 
 
 
 /***REALTIME & CALENDAR APP DEPENDENCIES***/
 #include "realTime_config.h"
+#include "pcbLight.h"
+
+
+
+
+/***PCB_LIGHT CONTROL METHODS***/
+void init_PCB_LIGHT_toggle()
+{
+    enable_PCB_LIGHT();
+    TOGGLE_PCB_LIGHT_FLAG = 1;
+}
 
 
 
@@ -11,6 +28,7 @@
 /***SYSTEM TIME STRUCTURE***/
 struct time
 {
+    uint16_t microseconds;
     uint16_t milliseconds;
     uint8_t seconds;
     uint8_t minutes;

@@ -26,84 +26,23 @@
 
 
 /***PCB_LIGHT CONTROL DEFINITIONS***/
-#define PCB_LIGHT_TIMER                  TCB0
+int TOGGLE_PCB_LIGHT_FLAG = 0;
 #define PULSE_DURATION_PCB_LIGHT 250 // Defines how long, in milliseconds, PCB_LIGHT stays on when toggled.
 
 
 
 /***PCB_LIGHT METHODS***/
-void init_PCB_LIGHT(uint32_t timerFreq) // Initializes PCB light as an output.
+void init_PCB_LIGHT() // Initializes PCB light as an output.
 {
     PCB_LIGHT_CTRLPORT.DIR |= (1 << PCB_LIGHT_PIN);
-    timerFreq_PCB_LIGHT = timerFreq;
 }
 
-
-
-
-/***PCB_LIGHT TIMING METHODS***/
-void configTimer_blink_PCB_LIGHT()
+void enable_PCB_LIGHT()
 {
-    
-    PCB_LIGHT_TIMER.CTRLA |= (1 << TCB0_CLKSEL0); // clock-per set as clock source.
-    PCB_LIGHT_TIMER.CTRLA |= (1 << TCB0_RUNSTNDBY); // Allow TCB0 to run in STANDBY.
-    
-    if(PCBLIGHT_TIMERFREQ_CHNG_FLAG) // System clock has changed frequency, which effects value needed to be written to comparative data-structures.
-    {
-        
-        switch(timerFreq_PCB_LIGHT)
-        {
-            case 32768:
-            {
+   PCB_LIGHT_CTRLPORT.OUT |= (1 << PCB_LIGHT_PIN); 
+}
 
-            }
-            case 12000000:
-            {
-
-            }
-            case 6000000:
-            {
-
-            }
-            case 1500000:
-            {
-
-            }
-            case 750000:
-            {
-
-            }
-            case 375000:
-            {
-
-            }
-            case 4000000:
-            {
-
-            }
-            case 2400000:
-            {
-
-            }
-            case 2000000:
-            {
-
-            }
-            case 1000000:
-            {
-
-            }
-            case 500000:
-            {
-
-            }
-        }
-        
-    }
-    else // You can use last value of pulseDur_PCB_LIGHT.
-    {
-        
-    }
-    
-    PCB_LIGHT_TIMER.CTRLA |= (1 << TCD0_ENABLE);
+void disable_PCB_LIGHT()
+{
+    PCB_LIGHT_CTRLPORT.OUT &= ~(1 << PCB_LIGHT_PIN);
 }
