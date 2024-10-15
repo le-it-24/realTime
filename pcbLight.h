@@ -46,3 +46,9 @@ void disable_PCB_LIGHT()
 {
     PCB_LIGHT_CTRLPORT.OUT &= ~(1 << PCB_LIGHT_PIN);
 }
+
+int finishPCBtoggle(void)
+{
+    disable_PCB_LIGHT();
+    return 0;
+}
