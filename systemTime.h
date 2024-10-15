@@ -36,7 +36,7 @@ struct time
     uint8_t day;
     uint8_t month;
     uint16_t year;
-    int leapYear;
+    uint8_t leapYear;
 };
 
 
