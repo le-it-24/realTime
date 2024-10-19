@@ -11,6 +11,8 @@
 /***REALTIME & CALENDAR APP DEPENDENCIES***/
 #include "realTime_config.h"
 #include "pcbLight.h"
+#include<stdio.h> 
+#include "string.h"
 
 
 
@@ -44,9 +46,48 @@ struct time
 
 /***SYSTEM TIMING VARIABLES***/
 struct time sysTime;
+int SYSTIME_SYNC_REQUIRED; // Flag raised when it's time to sync system time over internet.
+char timeNow[40];
 
 
 
+
+/***REALTIME DATA ACQUISTION METHODS***/
+void setCstring_realTime()
+{
+    char year[5];
+    sprintf(year,"%d",sysTime.year);
+    char month[3];
+    sprintf(month,"%d",sysTime.month);
+    char day[3];
+    sprintf(day,"%d",sysTime.day);
+    char hour[3];
+    sprintf(hour,"%d",sysTime.hour);
+    char min[3];
+    sprintf(min,"%d",sysTime.minutes);
+    char s[3];
+    sprintf(s,"%d",sysTime.seconds);
+    char ms[5];
+    sprintf(ms,"%d",sysTime.minutes);
+    char us[5];
+    sprintf(us,"%d",sysTime.minutes);
+    
+    strcat(timeNow,year);
+    strcat(timeNow, "Y:");
+    strcat(timeNow, month);
+    strcat(timeNow, "M:");
+    strcat(timeNow, hour);
+    strcat(timeNow, "H:");
+    strcat(timeNow, min);
+    strcat(timeNow, "m:");
+    strcat(timeNow, s);
+    strcat(timeNow, "S:");
+    strcat(timeNow, ms);
+    strcat(timeNow, "ms:");
+    strcat(timeNow, us);
+    strcat(timeNow, "us:");
+    
+}
 
 /***REALTIME DATA PROCESSING METHODS***/
 int isLeapYear(uint16_t year) // Returns 1 if year is a leap.

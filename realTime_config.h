@@ -33,4 +33,21 @@
 #define NOVEMBER        11
 #define DECEMBER        12
 
+// Cstring definitions for month abbreviations:
+#define JAN             "JAN\0"
+#define FEB             "FEB\0"
+#define MAR             "MAR\0"
+#define APR             "APR\0"
+#define MAYY             "MAY\0"
+#define JUN             "JUN\0"
+#define JUL             "JUL\0"
+#define AUG             "AUG\0"
+#define SEPT            "SEPT\0"
+#define OCT             "OCT\0"
+#define NOV             "NOV\0"
+#define DEC             "DEC\0"
+
+
+
+
 int month_30DaysOnly[] = {APRIL,JUNE,SEPTEMBER,NOVEMBER};
