@@ -72,6 +72,17 @@ void insertString(int start, int end, char *string, char *substring)
         tempString[c] = substring[c - start];
     }
     
+    // Insert remaining string content to temp-string:
+    int tempLength = strlen(tempString);
+    int tempStart = tempLength-1
+    for(int c = end+1; c < strlen(targetSize); c++)
+    {
+        tempString[tempStart] = string[c];
+        tempStart+=1;
+    }
+    
+    // Transfer assembled string data:
+    string = tempString;
 }
 
 void setCstring_realTime()
