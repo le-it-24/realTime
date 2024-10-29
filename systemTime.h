@@ -53,8 +53,10 @@ char timeNow[40];
 
 
 /***REALTIME DATA ACQUISTION METHODS***/
+void insertString(int start, int end, char *string, char *substring)
 void setCstring_realTime()
 {
+    
     char year[5];
     sprintf(year,"%"PRIu16,sysTime.year);
     char month[3];
@@ -71,6 +73,7 @@ void setCstring_realTime()
     sprintf(ms,"%"PRIu16,sysTime.milliseconds);
     char us[5];
     sprintf(us,"%"PRIu16,sysTime.microseconds);
+    
     
     strcat(timeNow,year);
     strcat(timeNow, "Y:");
