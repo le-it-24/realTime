@@ -54,6 +54,17 @@ char timeNow[40];
 
 /***REALTIME DATA ACQUISTION METHODS***/
 void insertString(int start, int end, char *string, char *substring)
+{
+    // Configure temp tempString
+    int targetSize = strlen(string);
+    char *tempString = malloc(targetSize+1 * sizeof(char));
+    
+    // Add characters before start to temp string:
+    for(int c = 0; c < start; c++)
+    {
+        tempString[c] = string[c];
+    }
+}
 void setCstring_realTime()
 {
     
