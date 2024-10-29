@@ -64,7 +64,16 @@ void insertString(int start, int end, char *string, char *substring)
     {
         tempString[c] = string[c];
     }
+    
+    // Insert substring to temp string:
+    int subLen = strlen(substring);
+    for(int c = start; c < start+subLen; c++)
+    {
+        tempString[c] = substring[c - start];
+    }
+    
 }
+
 void setCstring_realTime()
 {
     
