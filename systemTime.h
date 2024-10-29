@@ -56,21 +56,21 @@ char timeNow[40];
 void setCstring_realTime()
 {
     char year[5];
-    sprintf(year,"%d",sysTime.year);
+    sprintf(year,"%"PRIu16,sysTime.year);
     char month[3];
-    sprintf(month,"%d",sysTime.month);
+    sprintf(month,"%"PRIu8,sysTime.month);
     char day[3];
-    sprintf(day,"%d",sysTime.day);
+    sprintf(day,"%"PRIu8,sysTime.day);
     char hour[3];
-    sprintf(hour,"%d",sysTime.hour);
+    sprintf(hour,"%"PRIu8,sysTime.hour);
     char min[3];
-    sprintf(min,"%d",sysTime.minutes);
+    sprintf(min,"%"PRIu8,sysTime.minutes);
     char s[3];
-    sprintf(s,"%d",sysTime.seconds);
+    sprintf(s,"%"PRIu8,sysTime.seconds);
     char ms[5];
-    sprintf(ms,"%d",sysTime.minutes);
+    sprintf(ms,"%"PRIu16,sysTime.milliseconds);
     char us[5];
-    sprintf(us,"%d",sysTime.minutes);
+    sprintf(us,"%"PRIu16,sysTime.microseconds);
     
     strcat(timeNow,year);
     strcat(timeNow, "Y:");
