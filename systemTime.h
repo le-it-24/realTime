@@ -141,6 +141,11 @@ void setCstring_realTime()
     pasteIntoString(0, insertEndY, timeNow, year);
     
     // Insert month:
+    int insertStartM = getFirstOccurenceOfChar(timeNow, ':', insertEndY+2)+1;
+    int insertEndM = getFirstOccurenceOfChar(timeNow, '-', insertStartM)-1;
+    
+    // Insert Day:
+    
     strcat(timeNow,year);
     strcat(timeNow, "Y:");
     strcat(timeNow, month);
