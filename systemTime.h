@@ -151,7 +151,12 @@ void setCstring_realTime()
     pasteIntoString(insertStartD, insertEndD, timeNow, day);
     
     // Insert Hour:
+    int insertStartH = getFirstOccurenceOfChar(timeNow, ':', insertEndD+2)+1;
+    int insertEndH = getFirstOccurenceOfChar(timeNow, '-', insertStartH)-1;
+    pasteIntoString(insertStartH, insertEndH, timeNow, hour);
     
+    // Insert Minutes:
+    int 
     strcat(timeNow,year);
     strcat(timeNow, "Y:");
     strcat(timeNow, month);
