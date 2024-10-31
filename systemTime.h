@@ -172,21 +172,8 @@ void setCstring_realTime()
     
     // Insert microseconds:
     int insertStartUS = getFirstOccurenceOfChar(timeNow, ':', insertStartMS+2)+1;
-    
-    strcat(timeNow,year);
-    strcat(timeNow, "Y:");
-    strcat(timeNow, month);
-    strcat(timeNow, "M:");
-    strcat(timeNow, hour);
-    strcat(timeNow, "H:");
-    strcat(timeNow, min);
-    strcat(timeNow, "m:");
-    strcat(timeNow, s);
-    strcat(timeNow, "S:");
-    strcat(timeNow, ms);
-    strcat(timeNow, "ms:");
-    strcat(timeNow, us);
-    strcat(timeNow, "us:");
+    int insertEndUS = getFirstOccurenceOfChar(timeNow, '-', insertStartUS)-1;
+    pasteIntoString(insertStartUS, insertEndUS, timeNow, us);
     
 }
 
