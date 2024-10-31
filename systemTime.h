@@ -43,6 +43,69 @@ struct time
 
 
 
+/***STRING PROCESSING METHODS FOR SYSTEM TIME OUTPUT***/
+
+// Method for returning first occurence of specified character found after specified index:
+int getFirstOccurenceOfChar(char* string, char character, uint8_t index)
+{
+  // Start searching for character from first index:
+  for (uint8_t i = index; i < strlen(string); i++)
+    {
+      // If character is found, return index:
+      if (string[i] == character)
+      {
+        return i;
+      }
+      
+    }
+
+  // If character is not found, return -1:
+  return -1;
+}
+
+// Method inserts a substring between two specified points in a target string:
+void pasteIntoString(int start, int end, char *string, char *substring)
+{
+    // Configure temp tempString
+    int targetSize = strlen(string);
+    int substringSize = strlen(substring);
+  int totalSize = targetSize + substringSize;
+    char *tempString = (char *)malloc((totalSize+1) * sizeof(char));
+
+    // Add characters before start to temp string:
+    for(int c = 0; c < start; c++)
+    {
+        tempString[c] = string[c];
+    }
+
+    // Insert substring to temp string:
+    int index = start;
+    for(int c = 0; c < substringSize; c++)
+    {
+      tempString[index] = substring[c];
+      index+=1;
+    }
+
+    // Insert remaining string content to temp-string:
+    int appendAt = start + substringSize;
+    for(int c = end+1; c < targetSize; c++)
+    {
+        tempString[appendAt] = string[c];
+          appendAt+=1;
+    }
+    // Add null terminator to temp string:
+  tempString[totalSize] = '\0';
+  printf("%s\n", tempString);
+    // Transfer assembled string data:
+    strcpy(string, tempString);
+
+    // Free temp string:
+    free(tempString);
+  
+}
+
+
+
 
 /***SYSTEM TIMING VARIABLES***/
 struct time sysTime;
@@ -53,38 +116,6 @@ char timeNow[40];
 
 
 /***REALTIME DATA ACQUISTION METHODS***/
-void insertString(int start, int end, char *string, char *substring)
-{
-    // Configure temp tempString
-    int targetSize = strlen(string);
-    char *tempString = malloc(targetSize+1 * sizeof(char));
-    
-    // Add characters before start to temp string:
-    for(int c = 0; c < start; c++)
-    {
-        tempString[c] = string[c];
-    }
-    
-    // Insert substring to temp string:
-    int subLen = strlen(substring);
-    for(int c = start; c < start+subLen; c++)
-    {
-        tempString[c] = substring[c - start];
-    }
-    
-    // Insert remaining string content to temp-string:
-    int tempLength = strlen(tempString);
-    int tempStart = tempLength-1
-    for(int c = end+1; c < strlen(targetSize); c++)
-    {
-        tempString[tempStart] = string[c];
-        tempStart+=1;
-    }
-    
-    // Transfer assembled string data:
-    string = tempString;
-}
-
 void setCstring_realTime()
 {
     
@@ -105,7 +136,11 @@ void setCstring_realTime()
     char us[5];
     sprintf(us,"%"PRIu16,sysTime.microseconds);
     
+    /***ASSEMBLE STRING***/
+    int insertEndY = getFirstOccurenceOfChar(timeNow, '-', 0)-1;
+    pasteIntoString(0, insertEndY, timeNow, year);
     
+    // Insert month:
     strcat(timeNow,year);
     strcat(timeNow, "Y:");
     strcat(timeNow, month);
